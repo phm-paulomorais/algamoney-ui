@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <h1>Dashboard: receitas e despesas no mês: {{ mesEAnoAtual }}</h1>
+    </div>
+
+    <div class="ui-g-12 ui-md-6">
+      <p-panel header="Lançamentos (despesas) por categoria:">
+        <p-chart type="pie" [data]="pieChartData" [options]="options"></p-chart>
+      </p-panel>
+    </div>
+
+    <div class="ui-g-12 ui-md-6">
+      <p-panel header="Lançamentos por dia">
+        <p-chart type="line" [data]="lineChartData" [options]="options"></p-chart>
+      </p-panel>
+    </div>
+
+    <div class="ui-g-12 ui-md-offset-9 ui-md-3 ui-fluid" style="text-align: right;">
+      <strong>Total de receitas: </strong> <span style="color: blue;">{{ totalReceitas | number:'1.2-2'}}</span>
+    </div>
+    <div class="ui-g-12 ui-md-offset-9 ui-md-3 ui-fluid" style="text-align: right;">
+      <strong>Total de despesas: </strong> <span style="color: red;">{{ totalDespesas | number:'1.2-2'}}</span>
+    </div>
+    <div class="ui-g-12 ui-md-offset-9 ui-md-3 ui-fluid" style="text-align: right;">
+      <strong>Saldo: </strong> <span [ngClass]="{'saldo-verde' : isSaldoVerde, 'saldo-vermelho' : !isSaldoVerde }">{{ totalReceitas - totalDespesas | number:'1.2-2'}}</span>
+    </div>
+
+  </div>
+</div>
